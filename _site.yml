@@ -1,0 +1,14 @@
+name: "Hey my friends"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "About"
+      href: about.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<yz4717@cumc.columbia.edu>
+    - icon: fa-github fa-lg
+      href: https://github.com/YeungZY
+output:
+  html_document:
+    theme: cerulean

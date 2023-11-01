@@ -6,14 +6,15 @@ output:
   toc_float: TRUE
 ---
 
-# Yang Zhao
+#HI~~~~~~~~~
 
+This is Yang Zhao's website
+![](images/spongebob.jpg)
 
 ## Summary
 
 I am a current master student of Master of Science in Biostatistics at Columbia University. My previous research direction focused on Control Chart, Data Science Application in Social Science and Optimization in Algorithm. I am still wondering my research direction in the not distant future. Here comes my resume.
 
-![](images/spongebob.jpg)
 
 ## Education
 

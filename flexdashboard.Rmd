@@ -1,0 +1,42 @@
+---
+output: html_document
+---
+
+##Import the required
+```{r ,message=FALSE}
+library(p8105.datasets)
+library(ggplot2)
+library(tidyverse)
+library(plotly)
+```
+
+```{r}
+data("instacart")
+```
+
+```{r reorder}
+reorder_highest = 
+  instacart |> 
+  filter(reordered==1) |> 
+  group_by(department) |> 
+  tally() |> 
+  arrange(desc(n)) |> 
+  head(40)
+
+highest_reordered_plot = 
+  reorder_highest |> 
+  plot_ly(x = ~department, 
+        y = ~n, 
+        type = 'bar') |> 
+  layout(title = "Most repurchased items",
+         xaxis = list(title = "Department", automargin = TRUE),
+         yaxis = list(title = "Times of reordered",
+                      tickformat = ",g"))
+
+highest_reordered_plot
+```
+
+```{r}
+
+```
+

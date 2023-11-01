@@ -1,9 +1,7 @@
 ---
-title: "About me"
-output: 
-  html_document:
-  toc: TRUE
-  toc_float: TRUE
+output: html_document
 ---
 
-#About myself
+## About me
+
+I am a current master student of Master of Science in Biostatistics at Columbia University. My previous research direction focused on Control Chart, Data Science Application in Social Science and Optimization in Algorithm. I am still wondering my research direction in the not distant future.

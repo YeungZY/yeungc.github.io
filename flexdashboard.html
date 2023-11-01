@@ -11,7 +11,7 @@
 
 
 
-<title>Welcome to My Website</title>
+<title>flexdashboard.knit</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -35,6 +35,13 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.3/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -350,30 +357,37 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Welcome to My Website</h1>
 
 </div>
 
 
-<div id="hi" class="section level1">
-<h1>HI~~~~~~~~~</h1>
-<p>This is Yang Zhao’s website <img src="images/spongebob.jpg" /></p>
-</div>
-<div id="about-me" class="section level1">
-<h1>About me</h1>
-<p>You can visit the <a href="about.html">About</a> page via here.</p>
-</div>
-<div id="resume" class="section level1">
-<h1>Resume</h1>
-<p>I would like to let you know who I am. Here comes my <a
-href="resume.html">resume</a>.</p>
-</div>
-<div id="analysis" class="section level1">
-<h1>Analysis</h1>
-<p>Besides, I also attached the analysis of
-<code>The Instacart Online Grocery Shopping Dataset 2017</code>. You can
-visit <a href="flexdashboard.html">here</a></p>
-</div>
+<p>##Import the required</p>
+<pre class="r"><code>library(p8105.datasets)
+library(ggplot2)
+library(tidyverse)
+library(plotly)</code></pre>
+<pre class="r"><code>data(&quot;instacart&quot;)</code></pre>
+<pre class="r"><code>reorder_highest = 
+  instacart |&gt; 
+  filter(reordered==1) |&gt; 
+  group_by(department) |&gt; 
+  tally() |&gt; 
+  arrange(desc(n)) |&gt; 
+  head(40)
+
+highest_reordered_plot = 
+  reorder_highest |&gt; 
+  plot_ly(x = ~department, 
+        y = ~n, 
+        type = &#39;bar&#39;) |&gt; 
+  layout(title = &quot;Most repurchased items&quot;,
+         xaxis = list(title = &quot;Department&quot;, automargin = TRUE),
+         yaxis = list(title = &quot;Times of reordered&quot;,
+                      tickformat = &quot;,g&quot;))
+
+highest_reordered_plot</code></pre>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-78d76289e4d2796a2f10" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-78d76289e4d2796a2f10">{"x":{"visdat":{"f6d120d6405":["function () ","plotlyVisDat"]},"cur_data":"f6d120d6405","attrs":{"f6d120d6405":{"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Most repurchased items","xaxis":{"domain":[0,1],"automargin":true,"title":"Department","type":"category","categoryorder":"array","categoryarray":["alcohol","babies","bakery","beverages","breakfast","bulk","canned goods","dairy eggs","deli","dry goods pasta","frozen","household","international","meat seafood","missing","other","pantry","personal care","pets","produce","snacks"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Times of reordered","tickformat":",g"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["produce","dairy eggs","beverages","snacks","frozen","bakery","pantry","deli","canned goods","dry goods pasta","meat seafood","breakfast","household","babies","personal care","international","alcohol","missing","pets","bulk","other"],"y":[271886,146502,75060,69102,56168,30692,29498,27367,22782,18885,17907,16864,15372,8084,7271,4522,3397,3148,2834,786,697],"type":"bar","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 
 

@@ -7,8 +7,12 @@ navbar:
       href: mailto:<yz4717@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/YeungZY
-    - text: "flexdashboard"
+    - text: "Flex Dashboard"
+      href: flexdashboard.html
+    - text: "About"
       href: about.html
 output:
   html_document:
-    theme: cerulean
+    toc: TRUE
+    toc_float: TRUE
+    theme: cosmo

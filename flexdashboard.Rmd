@@ -1,8 +1,12 @@
 ---
-output: html_document
+title: "flexdashboard"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
-##Import the required
+
 ```{r ,message=FALSE}
 library(p8105.datasets)
 library(ggplot2)
@@ -10,9 +14,14 @@ library(tidyverse)
 library(plotly)
 ```
 
+
 ```{r}
 data("instacart")
 ```
+
+--------------------------------------------------------------------------------
+
+### Chart A
 
 ```{r reorder}
 reorder_highest = 
@@ -36,7 +45,51 @@ highest_reordered_plot =
 highest_reordered_plot
 ```
 
-```{r}
+Column {data-width=400}
 
+--------------------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+order_time =
+  instacart |> 
+  group_by(order_hour_of_day) |> 
+  distinct(order_id) |> 
+  summarize(times = n()) |>
+  rename(time = order_hour_of_day,
+         frequency = times) 
+
+order_time$time = as.factor(order_time$time)
+
+
+order_time |> 
+  plot_ly(x=~ time,
+          y=~ frequency,
+          type = "scatter",
+          mode = "line") |> 
+  layout(title = "The line plots of the time people would like to order" ,
+         xaxis = list(title = "Time in a day"),
+         yaxis = list(title = "Frequency"))
 ```
 
+
+--------------------------------------------------------------------------------
+
+### Chart C
+
+```{r}
+department_numbers =
+  instacart |> 
+  group_by(department) |> 
+  summarise(count = n())
+
+department_numbers |> 
+  plot_ly(labels = ~department,
+        values = ~count,
+        type = 'pie',
+        textinfo = 'label+percent') |> 
+  layout(title = "People's consumption preference")
+```
+
+--------------------------------------------------------------------------------

@@ -7,10 +7,13 @@ navbar:
       href: mailto:<yz4717@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/YeungZY
-    - text: "Flex Dashboard"
+    - text: "FlexDashboard"
       href: flexdashboard.html
+    - text: "Plotly"
+      href: plotly.html
     - text: "About"
       href: about.html
+      
 output:
   html_document:
     toc: TRUE

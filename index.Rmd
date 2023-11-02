@@ -1,7 +1,10 @@
 ---
 title: "Welcome to My Website"
 output: 
-  html_document
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+    theme: cosmo
 ---
 
 # HI~~~~~~~~~
@@ -20,4 +23,4 @@ Here comes my [resume](resume.html).
 
 # Analysis
 
-Besides, I also attached the analysis of `The Instacart Online Grocery Shopping Dataset 2017`. You can visit [here](flexdashboard.html)
+Besides, I also attached the analysis of `The Instacart Online Grocery Shopping Dataset 2017`. You can visit [here](plotly.html)

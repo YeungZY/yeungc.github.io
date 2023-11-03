@@ -6,7 +6,7 @@ output:
     theme: cosmo
 ---
 
-#Import the required
+# Import the required
 
 ```{r ,message=FALSE}
 library(p8105.datasets)
